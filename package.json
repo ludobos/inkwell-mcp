@@ -1,0 +1,26 @@
+{
+  "name": "inkwell-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for newsletter creators — save sources, organize notes, draft articles with AI",
+  "type": "module",
+  "bin": {
+    "inkwell-mcp": "./dist/cli/index.js"
+  },
+  "main": "./dist/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "serve": "node dist/cli/index.js serve",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": ["mcp", "newsletter", "substack", "editorial", "ai", "writing"],
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.8.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.13.4",
+    "typescript": "^5.7.3"
+  }
+}
