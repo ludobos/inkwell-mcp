@@ -8,6 +8,8 @@ import { noteTools } from './tools/notes.js';
 import { sourceTools } from './tools/sources.js';
 import { briefTools } from './tools/brief.js';
 import { statsTools } from './tools/stats.js';
+import { importTools } from './tools/import.js';
+import { writeTools } from './tools/write.js';
 
 const ALL_TOOLS: McpTool[] = [
   ...articleTools,
@@ -17,6 +19,8 @@ const ALL_TOOLS: McpTool[] = [
   ...sourceTools,
   ...briefTools,
   ...statsTools,
+  ...importTools,
+  ...writeTools,
 ];
 
 const TOOL_MAP = new Map<string, McpTool>(ALL_TOOLS.map(t => [t.name, t]));

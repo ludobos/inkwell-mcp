@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 360px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      padding: 16px;
+      color: #1a1a2e;
+      background: #fafaf8;
+    }
+    h1 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1a1a2e;
+    }
+    .field { margin-bottom: 10px; }
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: inherit;
+      background: #fff;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #4a90d9;
+      box-shadow: 0 0 0 2px rgba(74,144,217,0.15);
+    }
+    textarea { height: 60px; resize: vertical; }
+    .tags-input {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 4px 6px;
+      min-height: 32px;
+    }
+    .tag {
+      background: #e8eef4;
+      color: #4a6fa5;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .tag:hover { background: #d0dce8; }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4a90d9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    button:hover { background: #3a7bc8; }
+    button:disabled { background: #ccc; cursor: not-allowed; }
+    .status {
+      margin-top: 8px;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      text-align: center;
+      display: none;
+    }
+    .status.success { display: block; background: #e6f4ea; color: #1e7e34; }
+    .status.error { display: block; background: #fce8e6; color: #c62828; }
+    .settings-link {
+      display: block;
+      text-align: center;
+      font-size: 11px;
+      color: #999;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+    .settings-link:hover { color: #666; }
+  </style>
+</head>
+<body>
+  <h1>Save Source</h1>
+
+  <div class="field">
+    <label>Title</label>
+    <input type="text" id="title" placeholder="Source title">
+  </div>
+
+  <div class="field">
+    <label>Type</label>
+    <select id="type">
+      <option value="article">Article</option>
+      <option value="report">Report</option>
+      <option value="video">Video</option>
+      <option value="podcast">Podcast</option>
+      <option value="dataset">Dataset</option>
+      <option value="interview">Interview</option>
+      <option value="social">Social</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>Tags (comma-separated)</label>
+    <input type="text" id="tags" placeholder="e.g. AI, funding, Netflix">
+  </div>
+
+  <div class="field">
+    <label>Notes</label>
+    <textarea id="notes" placeholder="Why is this relevant?"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Selected Text</label>
+    <textarea id="selection" placeholder="Highlight text on the page before opening" readonly></textarea>
+  </div>
+
+  <button id="save">Save Source</button>
+
+  <div id="status" class="status"></div>
+
+  <a href="#" id="settings-link" class="settings-link">Settings</a>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -75,6 +75,9 @@ Then ask Claude: *"List my articles"* or *"Save this source: https://example.com
 | `clear_notes` | Delete notes (single or batch with confirmation) |
 | `prepare_brief` | Generate article brief from notes + sources |
 | `get_stats` | Newsletter aggregate statistics |
+| `import_newsletter` | Import from Substack, Beehiiv, Ghost, or Kit |
+| `draft_article` | Generate structured draft from brief + voice template |
+| `list_voice_templates` | List available writing style templates |
 
 ## Database
 
@@ -111,28 +114,33 @@ export default {
 
 ```
 src/
-  mcp.ts          # JSON-RPC dispatcher + tool registry
-  types.ts        # TypeScript interfaces
-  auth.ts         # Simplified auth (owner/public)
-  config.ts       # Config loader
-  utils.ts        # Formatting helpers
+  mcp.ts             # JSON-RPC dispatcher + 20 tools
+  types.ts           # TypeScript interfaces
+  auth.ts            # Simplified auth (owner/public)
+  config.ts          # Config loader
+  utils.ts           # Formatting helpers
   db/
-    sqlite.ts     # SQLite adapter (better-sqlite3)
-    migrations/   # Schema (articles, notes, sources)
-  tools/          # MCP tools (articles, experts, tags, notes, sources, brief, stats)
+    sqlite.ts        # SQLite adapter (better-sqlite3)
+    migrations/      # Schema (articles, notes, sources)
+  tools/             # MCP tools (articles, experts, tags, notes, sources, brief, stats, import, write)
+  connectors/        # Newsletter importers (Substack, Beehiiv, Ghost, Kit)
+  voice/             # Voice template loader
   local/
-    stdio.ts      # stdio transport for local use
+    stdio.ts         # stdio transport for local use
 cli/
-  index.ts        # CLI entry point
+  index.ts           # CLI entry point
+extension/           # Chrome Extension MV3 (web clipper)
 templates/
-  voice/          # Writing style templates
+  voice/             # Writing style templates (.md)
+docs/                # Setup guides
 ```
 
 ## Roadmap
 
-- [ ] Newsletter import connectors (Substack, Beehiiv, Ghost, Kit)
-- [ ] Voice/style templates for AI-assisted drafting
-- [ ] Browser extension (web clipper)
+- [x] 20 MCP tools (articles, notes, sources, brief, stats, import, write)
+- [x] Newsletter import connectors (Substack, Beehiiv, Ghost, Kit)
+- [x] Voice/style templates for AI-assisted drafting
+- [x] Browser extension (web clipper)
 - [ ] Cloudflare Worker deployment (hosted mode)
 - [ ] Supabase adapter for multi-user
 - [ ] Semantic search via Vectorize
